@@ -29,7 +29,7 @@ import fs from 'fs';
  * 
  * Upload pictures to Imgbox and get URLs in response
  *
- * @param {Object} images - [MANDATORY] URL | URL[] | FilePath | FilePath[] | WithName | WithName[]
+ * @param {Object} images - [MANDATORY] URL | URL[] | FilePath | FilePath[] | WithName | WithName[] | Buffer | Buffer[]
  * @param {Object} options - [OPTIONAL]
  * @param {string} options.auth_cookie - AuthCookie you got after login (from browser)
  * @param {string} options.album_title - Title of your Album
@@ -98,6 +98,12 @@ const imgbox = async (
                 }
             }
         }
+     
+        if (images.constructor === Buffer) {
+            const data = await postImage(images, form);
+            result = { ok: true, message: 'Image URL has been uploaded.', data };
+            addGalleryEditResponse(result, token);
+        }
 
         if ((images as WithName).source) {
             // 3. { source: 'http://lorem.photo/photo.jpg', filename: 'sky from url' }
@@ -142,6 +148,14 @@ const imgbox = async (
                             throw new Error(error.message);
                         }
                     }
+                }));
+            }
+     
+            if ((images as Buffer[])) {
+                dataArray = await Promise.allSettled(images.map(async (source, _) => {
+                    const form = createFormData(token, content_type, thumbnail_size, comments_enabled);
+                    const data = await postImage(source, form);
+                    return data;
                 }));
             }
 
