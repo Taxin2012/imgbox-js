@@ -27,7 +27,9 @@ export type Images =
     | string
     | string[]
     | WithName
-    | WithName[];
+    | WithName[]
+    | Buffer
+    | Buffer[];
 
 // * PARAM 2 ----------------------------------------------------
 
