@@ -29,7 +29,7 @@ import fs from 'fs';
  * 
  * Upload pictures to Imgbox and get URLs in response
  *
- * @param {Object} images - [MANDATORY] URL | URL[] | FilePath | FilePath[] | WithName | WithName[]
+ * @param {Object} images - [MANDATORY] URL | URL[] | FilePath | FilePath[] | WithName | WithName[] | Buffer | Buffer[]
  * @param {Object} options - [OPTIONAL]
  * @param {string} options.auth_cookie - AuthCookie you got after login (from browser)
  * @param {string} options.album_title - Title of your Album
