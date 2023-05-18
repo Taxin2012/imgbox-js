@@ -56,9 +56,11 @@ export type ThumbnailSize =
 export type CommentEnabled = false | true;
 
 export interface IAlbumConfig {
-    gallery: boolean;
-    gallery_title: string;
+    gallery?: boolean;
+    gallery_title?: string;
     comments_enabled: CommentEnabled;
+    gallery_id?: string;
+    gallery_secret?: string;
 }
 
 export type LoggerEnabled = true | false;
