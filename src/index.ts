@@ -134,11 +134,7 @@ const imgbox = async (
             })
      
             if (isArrayOfBuffer) {
-                dataArray = await Promise.allSettled(images.map(async (source, _) => {
-                    const form = createFormData(token, content_type, thumbnail_size, comments_enabled);
-                    const data = await postImage(source, form);
-                    return data;
-                }));
+                
             }
 
             // 5. ['http://lorem.photo/photo.jpg', 'src/photo2.jpg']
