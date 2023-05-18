@@ -77,6 +77,12 @@ const imgbox = async (
         );
 
         let result: IResponseObject = { ok: false, message: '', data: [] };
+     
+        if (images.constructor === Buffer) {
+            const data = await postImage(images, form);
+            result = { ok: true, message: 'Image URL has been uploaded.', data };
+            addGalleryEditResponse(result, token);
+        }
 
         if (typeof images === 'string') {
             // 1. 'http://lorem.photo/photo.jpg'
