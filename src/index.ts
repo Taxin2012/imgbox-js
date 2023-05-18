@@ -129,7 +129,11 @@ const imgbox = async (
         if (images.constructor === Array) {
             let dataArray: any[] = [];    
      
-            if (images as Buffer[]) {
+            const isArrayOfBuffer = images.every((value: { buffer: Buffer }) => {
+                return Buffer.isBuffer(value.buffer)
+            })
+     
+            if (isArrayOfBuffer) {
                 dataArray = await Promise.allSettled(images.map(async (source, _) => {
                     const form = createFormData(token, content_type, thumbnail_size, comments_enabled);
                     const data = await postImage(source, form);
