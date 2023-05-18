@@ -127,14 +127,14 @@ const imgbox = async (
         }
 
         if (images.constructor === Array) {
-            let dataArray: any[] = [];    
+            let dataArray: any[] = [];
      
-            const isArrayOfBuffer = images.every((value: { buffer: Buffer }) => {
-                return Buffer.isBuffer(value.buffer)
-            })
-     
-            if (isArrayOfBuffer) {
-                
+            if ((images as Buffer[]).every(file => Buffer.isBuffer(file))) {
+                dataArray = await Promise.allSettled(images.map(async (source, _) => {
+                    const form = createFormData(token, content_type, thumbnail_size, comments_enabled);
+                    const data = await postImage(source, form);
+                    return data;
+                }));
             }
 
             // 5. ['http://lorem.photo/photo.jpg', 'src/photo2.jpg']
