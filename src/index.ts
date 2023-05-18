@@ -78,7 +78,7 @@ const imgbox = async (
 
         let result: IResponseObject = { ok: false, message: '', data: [] };
      
-        if (typeof images === 'Buffer') {
+        if (Buffer.isBuffer(images)) {
             const data = await postImage(images, form);
             result = { ok: true, message: 'Image URL has been uploaded.', data };
             addGalleryEditResponse(result, token);
