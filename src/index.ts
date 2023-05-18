@@ -132,7 +132,7 @@ const imgbox = async (
             if ((images as Buffer[]).every(file => Buffer.isBuffer(file))) {
                 dataArray = await Promise.allSettled(images.map(async (source, _) => {
                     const form = createFormData(token, content_type, thumbnail_size, comments_enabled);
-                    const data = await postImage(source, form);
+                    const data = await postImage(source as Buffer, form);
                     return data;
                 }));
             }
