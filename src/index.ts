@@ -64,7 +64,7 @@ const imgbox = async (
             comments_enabled
         };
      
-        if (!album_config.album_id || !options?.album_secret) {
+        if (!options?.album_id || !options?.album_secret) {
             album_config.gallery = true;
             album_config.gallery_title = options?.album_title ? options.album_title : 'Album ' + new Date().getTime();
         } else {
