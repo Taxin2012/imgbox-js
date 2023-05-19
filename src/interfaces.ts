@@ -67,7 +67,7 @@ export type ImageScope = 'all' | 'unbound';
 
 export type OrderBy = 'updated' | 'created' | 'title';
 
-export interface PromiseFulfilledResultFixed {
+export interface PromiseFulfilledResult {
     status: "fulfilled";
     value?: any;
 }
