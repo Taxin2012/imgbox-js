@@ -66,3 +66,8 @@ export type LoggerEnabled = true | false;
 export type ImageScope = 'all' | 'unbound';
 
 export type OrderBy = 'updated' | 'created' | 'title';
+
+export interface PromiseFulfilledResult {
+    status: "fulfilled";
+    value?: any;
+}
