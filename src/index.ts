@@ -533,7 +533,7 @@ imgbox.deleteImages = async (
             }
         }));
 
-        const newBody = { images: slugExist.filter(val => val.status === 'fulfilled' && val.value !== undefined).map(el => (el as PromiseFulfilledResult).value) };
+        const newBody = { images: slugExist.filter(val => val.status === 'fulfilled' && val.value !== undefined).map(el => (el as PromiseFulfilledResultFixed).value) };
 
         if (newBody.images.length === 0) {
             return {
