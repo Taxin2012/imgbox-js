@@ -67,9 +67,6 @@ const imgbox = async (
         if (!options?.album_id || !options?.album_secret) {
             album_config.gallery = true;
             album_config.gallery_title = options?.album_title ? options.album_title : 'Album ' + new Date().getTime();
-        } else {
-            album_config.gallery_id = options?.album_id;
-            album_config.gallery_secret = options?.album_secret;
         }
 
         if (options?.logger === false) {
@@ -79,13 +76,17 @@ const imgbox = async (
         let token: IToken = options?.auth_cookie
             ? await getToken(album_config, options.auth_cookie, default_token)
             : await getToken(album_config);
+     
+        if (!album_config.gallery) {
+            token.gallery_id = options?.album_id;
+            token.gallery_secret = options?.album_secret;
+        }
 
         const form = createFormData(
             token,
             content_type,
             thumbnail_size,
-            comments_enabled,
-            options?.album_id
+            comments_enabled
         );
 
         let result: IResponseObject = { ok: false, message: '', data: [] };
