@@ -84,7 +84,8 @@ const imgbox = async (
             token,
             content_type,
             thumbnail_size,
-            comments_enabled
+            comments_enabled,
+            options?.album_id
         );
 
         let result: IResponseObject = { ok: false, message: '', data: [] };
