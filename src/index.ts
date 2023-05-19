@@ -509,6 +509,7 @@ imgbox.deleteImages = async (
         logger?: LoggerEnabled;
     }
 ): Promise<IResponseObject> => {
+    try {
         if (options?.logger === false) {
             DisableLogger();
         }
@@ -569,6 +570,13 @@ imgbox.deleteImages = async (
         } else {
             return { ok: false, message: 'Images not deleted. Try again.', data: [] };
         }
+    } catch (error: any) {
+        return {
+            ok: false,
+            message: error,
+            data: []
+        };
+    }
 };
 
 export { imgbox };
