@@ -533,7 +533,7 @@ imgbox.deleteImages = async (
             }
         }));
 
-        const newBody = { images: slugExist.filter(val => val.status === 'fulfilled' && val.value !== undefined).map(el => el.value) };
+        const newBody = { images: slugExist.filter(val => val.status === 'fulfilled' && val.value !== undefined).map(el => (el as PromiseFulfilledResult).value) };
 
         if (newBody.images.length === 0) {
             return {
@@ -542,6 +542,7 @@ imgbox.deleteImages = async (
                 data: []
             };
         }
+     
         const config = setHeadersConfig([
             { key: 'sec-ch-ua', value: '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"' },
             { key: 'X-CSRF-TOKEN', value: csrfCookie.csrf_token },
