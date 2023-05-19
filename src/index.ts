@@ -10,7 +10,8 @@ import {
     IResponseObject,
     ImageScope,
     OrderBy,
-    IToken
+    IToken,
+    PromiseFulfilledResult
 } from './interfaces';
 import {
     getCsrfAndCookie,
