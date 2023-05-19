@@ -535,9 +535,6 @@ imgbox.deleteImages = async (
         }));
 
         const newBody = { images: slugExist.filter(val => val.status === 'fulfilled' && val.value !== undefined).map(el => (el as PromiseFulfilledResult).value) };
-        const test = slugExist.filter(val => val.status === 'fulfilled' && val.value !== undefined).map(el => (el as PromiseFulfilledResult).value);
-        console.log("TEST", newBody);
-        console.log("TEST2", test);
 
         if (newBody.images.length === 0) {
             return {
