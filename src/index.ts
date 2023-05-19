@@ -558,7 +558,8 @@ imgbox.deleteImages = async (
             //{ key: 'Accept-Language', value: 'en-US,en;q=0.9,id;q=0.8' },
             { key: 'Cookie', value: options.auth_cookie }
         ]);
-
+    
+        console.log("NEW BODY:", newBody);
         const response = await REQUEST.post(URL.delete_images, newBody, config);
 
         if (response.data === 'OK') {
