@@ -33,6 +33,8 @@ import fs from 'fs';
  * @param {Object} options - [OPTIONAL]
  * @param {string} options.auth_cookie - AuthCookie you got after login (from browser)
  * @param {string} options.album_title - Title of your Album
+ * @param {string} options.album_id - ID of album
+ * @param {string} options.album_secret - Secret of album
  * @param {number} options.content_type - 1 = FamilySafeContent | 2 = AdultContent
  * @param {string} options.thumbnail_size - '100c'| '150c'| '200c'| '250c'| '300c'| '350c'| '500c'| '800c'| '100r'| '150r'| '200r'| '250r'| '300r'| '350r'| '500r'| '800r';
  * @param {string} options.comments_enabled - 0 = Disabled | 1 = Enabled
@@ -45,6 +47,8 @@ const imgbox = async (
     options?: {
         auth_cookie?: string,
         album_title?: string,
+        album_id?: string,
+        album_secret?: string,
         content_type?: ContentType,
         thumbnail_size?: ThumbnailSize,
         comments_enabled?: CommentEnabled,
@@ -55,11 +59,18 @@ const imgbox = async (
         const content_type: ContentType = options?.content_type ? options.content_type : 'safe';
         const thumbnail_size: ThumbnailSize = options?.thumbnail_size ? options.thumbnail_size : '100c';
         const comments_enabled: CommentEnabled = options?.comments_enabled ? options.comments_enabled : false;
+     
         const album_config: IAlbumConfig = {
-            gallery: options?.album_title ? true : false,
-            gallery_title: options?.album_title ? options.album_title : 'Album ' + new Date().getTime(),
             comments_enabled
         };
+     
+        if (!album_config.album_id || !options?.album_secret) {
+            album_config.gallery = true;
+            album_config.gallery_title = options?.album_title ? options.album_title : 'Album ' + new Date().getTime();
+        } else {
+            album_config.album_id = options?.album_id;
+            album_config.album_secret = options?.album_secret;
+        }
 
         if (options?.logger === false) {
             DisableLogger();
