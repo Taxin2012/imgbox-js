@@ -543,23 +543,22 @@ imgbox.deleteImages = async (
             };
         }
         const config = setHeadersConfig([
-            //{ key: 'sec-ch-ua', value: '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"' },
+            { key: 'sec-ch-ua', value: '"Google Chrome";v="93", " Not;A Brand";v="99", "Chromium";v="93"' },
             { key: 'X-CSRF-TOKEN', value: csrfCookie.csrf_token },
-            //{ key: 'sec-ch-ua-mobile', value: '?0' },
-            //{ key: 'Accept', value: 'application/json;charset=UTF-8' },
-            //{ key: 'Content-Type', value: 'application/json, text/plain, */*' },
-            //{ key: 'X-Requested-With', value: 'XMLHttpRequest' },
-            //{ key: 'sec-ch-ua-platform', value: '"macOS"' },
-            //{ key: 'Origin', value: URL.baseURL },
-            //{ key: 'Sec-Fetch-Site', value: 'same-origin' },
-            //{ key: 'Sec-Fetch-Mode', value: 'cors' },
-            //{ key: 'Sec-Fetch-Dest', value: 'empty' },
-            //{ key: 'Referer', value: URL.baseURL + '/images' },
-            //{ key: 'Accept-Language', value: 'en-US,en;q=0.9,id;q=0.8' },
+            { key: 'sec-ch-ua-mobile', value: '?0' },
+            { key: 'Accept', value: 'application/json;charset=UTF-8' },
+            { key: 'Content-Type', value: 'application/json, text/plain, */*' },
+            { key: 'X-Requested-With', value: 'XMLHttpRequest' },
+            { key: 'sec-ch-ua-platform', value: '"macOS"' },
+            { key: 'Origin', value: URL.baseURL },
+            { key: 'Sec-Fetch-Site', value: 'same-origin' },
+            { key: 'Sec-Fetch-Mode', value: 'cors' },
+            { key: 'Sec-Fetch-Dest', value: 'empty' },
+            { key: 'Referer', value: URL.baseURL + '/images' },
+            { key: 'Accept-Language', value: 'en-US,en;q=0.9,id;q=0.8' },
             { key: 'Cookie', value: options.auth_cookie }
         ]);
-    
-        console.log("NEW BODY:", newBody);
+     
         const response = await REQUEST.post(URL.delete_images, newBody, config);
 
         if (response.data === 'OK') {
