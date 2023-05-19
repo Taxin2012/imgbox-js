@@ -68,8 +68,8 @@ const imgbox = async (
             album_config.gallery = true;
             album_config.gallery_title = options?.album_title ? options.album_title : 'Album ' + new Date().getTime();
         } else {
-            album_config.album_id = options?.album_id;
-            album_config.album_secret = options?.album_secret;
+            album_config.gallery_id = options?.album_id;
+            album_config.gallery_secret = options?.album_secret;
         }
 
         if (options?.logger === false) {
