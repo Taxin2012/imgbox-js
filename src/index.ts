@@ -548,13 +548,13 @@ imgbox.deleteImages = async (
             //{ key: 'sec-ch-ua-mobile', value: '?0' },
             //{ key: 'Accept', value: 'application/json;charset=UTF-8' },
             //{ key: 'Content-Type', value: 'application/json, text/plain, */*' },
-            { key: 'X-Requested-With', value: 'XMLHttpRequest' },
+            //{ key: 'X-Requested-With', value: 'XMLHttpRequest' },
             //{ key: 'sec-ch-ua-platform', value: '"macOS"' },
-            { key: 'Origin', value: URL.baseURL },
+            //{ key: 'Origin', value: URL.baseURL },
             //{ key: 'Sec-Fetch-Site', value: 'same-origin' },
             //{ key: 'Sec-Fetch-Mode', value: 'cors' },
             //{ key: 'Sec-Fetch-Dest', value: 'empty' },
-            { key: 'Referer', value: URL.baseURL + '/images' },
+            //{ key: 'Referer', value: URL.baseURL + '/images' },
             //{ key: 'Accept-Language', value: 'en-US,en;q=0.9,id;q=0.8' },
             { key: 'Cookie', value: options.auth_cookie }
         ]);
