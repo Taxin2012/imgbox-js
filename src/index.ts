@@ -79,7 +79,7 @@ const imgbox = async (
             ? await getToken(album_config, options.auth_cookie, default_token)
             : await getToken(album_config);
      
-        if (!album_config.gallery) {
+        if (options?.use_album && !album_config.gallery) {
             token.gallery_id = options?.album_id;
             token.gallery_secret = options?.album_secret;
         }
