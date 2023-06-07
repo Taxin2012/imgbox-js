@@ -50,7 +50,7 @@ const imgbox = async (
         album_title?: string,
         album_id?: string,
         album_secret?: string,
-        use_album?: bool,
+        use_album?: Boolean,
         content_type?: ContentType,
         thumbnail_size?: ThumbnailSize,
         comments_enabled?: CommentEnabled,
