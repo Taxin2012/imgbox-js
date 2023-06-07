@@ -221,6 +221,8 @@ const imgbox = async (
 
         return result;
     } catch (error: any) {
+        console.log(error);
+        
         return {
             ok: false,
             message: error.message,
